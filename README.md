@@ -1,12 +1,10 @@
 # WAP to show whether the rectangle become the square or not on the basis of user input
 
 import java.util.Scanner;
-
 public class Rectangle {
     private double length;
     private double width;
-
-    public Rectangle(double length, double width) {
+ public Rectangle(double length, double width) {
         this.length = length;
         this.width = width;
     }

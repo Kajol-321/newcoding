@@ -1,83 +1,36 @@
-# WAP to find the percentage of student who contains 5 subjects and check the following condition (Take
-the input from user) using interface and super keywordCalculate the percentage of any student who have 5 subjects.
-If percentage is greater than , equal to 90 but less than 100 then print “You are an outstanding
-student”.
-If percentage is greater than , equal to 80 but less than 90 then print “Your performance is good”.
-If percentage is greater than , equal to 70 but less than 80 then print “Your performance is better”.
-If percentage is greater than , equal to 60 but less than 70 then print “Your performance is average”.
-If percentage is greater than , equal to 50 but less than 60 then print “Work hard, you can do better”.
-Otherwise print “You have to work hard”
+# WAP to show whether the rectangle become the square or not on the basis of user input
 
 import java.util.Scanner;
 
-interface PercentageCalculator {
-    void calculatePercentage();
-}
+public class Rectangle {
+    private double length;
+    private double width;
 
-class Person {
-    String name;
-
-    Person(String name) {
-        this.name = name;
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
     }
 
-    void display() {
-        System.out.println("Name: " + name);
-    }
-}
-
-class Student extends Person implements PercentageCalculator {
-    int[] marks = new int[5];
-
-    Student(String name, int[] marks) {
-        super(name);
-        this.marks = marks;
-    }
-
-    @Override
-    public void calculatePercentage() {
-        int totalMarks = 0;
-        for (int mark : marks) {
-            totalMarks += mark;
-        }
-        double percentage = (double) totalMarks / marks.length;
-
-        System.out.printf("Percentage: %.2f%%\n", percentage);
-
-        if (percentage >= 90 && percentage < 100) {
-            System.out.println("You are an outstanding student");
-        } else if (percentage >= 80 && percentage < 90) {
-            System.out.println("Your performance is good");
-        } else if (percentage >= 70 && percentage < 80) {
-            System.out.println("Your performance is better");
-        } else if (percentage >= 60 && percentage < 70) {
-            System.out.println("Your performance is average");
-        } else if (percentage >= 50 && percentage < 60) {
-            System.out.println("Work hard, you can do better");
+    public void display() {
+        if (length == width) {
+            System.out.println("The rectangle is a square.");
         } else {
-            System.out.println("You have to work hard");
+            System.out.println("The rectangle is not a square.");
         }
     }
-}
 
-public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter student's name: ");
-        String name = scanner.nextLine();
+        System.out.print("Enter the length of the rectangle: ");
+        double length = scanner.nextDouble();
 
-        int[] marks = new int[5];
-        for (int i = 0; i < 5; i++) {
-            System.out.print("Enter marks for subject " + (i + 1) + ": ");
-            marks[i] = scanner.nextInt();
-        }
+        System.out.print("Enter the width of the rectangle: ");
+        double width = scanner.nextDouble();
 
-        Student student = new Student(name, marks);
-        student.display();
-        student.calculatePercentage();
+        Rectangle rectangle = new Rectangle(length, width);
+        rectangle.display();
 
         scanner.close();
     }
 }
-
